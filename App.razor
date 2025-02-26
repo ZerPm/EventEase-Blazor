@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@namespace EventEaseApp
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<Router AppAssembly="@typeof(Program).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <CascadingAuthenticationState>
+            <Authorizing>
+                <p>Autenticando...</p>
+            </Authorizing>
+            <NotAuthorized>
+                <p>No tienes acceso a esta página.</p>
+            </NotAuthorized>
+        </CascadingAuthenticationState>
+    </NotFound>
+</Router>
