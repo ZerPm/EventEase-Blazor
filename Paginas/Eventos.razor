@@ -1,0 +1,34 @@
+@page "/eventos"
+@using EventEase.Models
+
+<h3>Lista de Eventos</h3>
+
+<ul>
+    @foreach (var evento in eventos)
+    {
+        <li>@evento.Title - @evento.Date.ToShortDateString()</li>
+    }
+</ul>
+
+<h4>Agregar Evento</h4>
+<input @bind="nuevoEvento.Title" placeholder="Título" />
+<input @bind="nuevoEvento.Description" placeholder="Descripción" />
+<input type="date" @bind="nuevoEvento.Date" />
+<button @onclick="AgregarEvento">Agregar</button>
+
+@code {
+    private List<Event> eventos = new();
+    private Event nuevoEvento = new();
+
+    private void AgregarEvento()
+    {
+        eventos.Add(new Event
+        {
+            Id = eventos.Count + 1,
+            Title = nuevoEvento.Title,
+            Description = nuevoEvento.Description,
+            Date = nuevoEvento.Date
+        });
+        nuevoEvento = new Event();
+    }
+}

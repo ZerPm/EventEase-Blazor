@@ -1,0 +1,16 @@
+@page "/perfil"
+@using EventEase.Models
+
+<h3>Perfil del Usuario</h3>
+
+<p><strong>Nombre:</strong> @usuario.Name</p>
+<p><strong>Email:</strong> @usuario.Email</p>
+
+@code {
+    private User usuario = new User
+    {
+        Id = 1,
+        Name = "Christian Manco",
+        Email = "chris.manco@example.com"
+    };
+}
